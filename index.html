@@ -69,20 +69,20 @@
       padding: 8rem 2rem 6rem; position: relative;
     }
     .hero-label {
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--text-light); margin-bottom: 2.5rem;
+      font-size: 0.74rem; font-weight: 500; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--text-mid); margin-bottom: 2.5rem;
       opacity: 0; animation: fadeIn 1s 0.2s forwards;
     }
     .hero h1 {
       font-family: var(--serif);
       font-size: clamp(3rem, 7vw, 6.5rem);
-      font-weight: 400; line-height: 1.05; letter-spacing: -0.03em;
+      font-weight: 600; line-height: 1.05; letter-spacing: -0.03em;
       max-width: 950px; opacity: 0; animation: fadeIn 1s 0.4s forwards;
     }
     .hero h1 em { font-style: italic; }
     .hero-sub {
-      font-size: 1.08rem; color: var(--text-mid); max-width: 560px;
-      margin: 2.5rem auto 0; line-height: 1.85;
+      font-size: 1.08rem; color: var(--text); max-width: 560px;
+      margin: 2.5rem auto 0; line-height: 1.85; font-weight: 300;
       opacity: 0; animation: fadeIn 1s 0.7s forwards;
     }
     .hero-scroll {
@@ -104,8 +104,8 @@
     .divider { width: 100%; max-width: 1200px; margin: 0 auto; height: 1px; background: var(--border); }
 
     .side-label {
-      font-family: var(--serif); font-size: 0.76rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light);
+      font-family: var(--serif); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text);
       padding-top: 0.3rem;
     }
 
@@ -128,7 +128,7 @@
     .snapshot-item { }
     .snapshot-label {
       font-size: 0.66rem; font-weight: 500; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--text-light); margin-bottom: 0.3rem;
+      text-transform: uppercase; color: var(--text-mid); margin-bottom: 0.3rem;
     }
     .snapshot-value { font-size: 0.95rem; color: var(--text); font-weight: 400; line-height: 1.5; }
 
@@ -168,7 +168,7 @@
     }
     .projects-header h2 {
       font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400; letter-spacing: -0.02em; line-height: 1.2;
+      font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;
     }
     .project-item {
       border-top: 1px solid var(--border); padding: 2.8rem 0;
@@ -185,7 +185,7 @@
       text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
     }
     .project-title {
-      font-family: var(--serif); font-size: 1.5rem; font-weight: 400;
+      font-family: var(--serif); font-size: 1.5rem; font-weight: 600;
       letter-spacing: -0.01em; line-height: 1.3;
     }
     .project-desc { font-size: 0.93rem; color: var(--text-mid); line-height: 1.75; max-width: 480px; }
@@ -212,10 +212,10 @@
     }
     .exp-item:last-child { border-bottom: 1px solid var(--border); }
     .exp-date {
-      font-size: 0.73rem; font-weight: 400; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-light); padding-top: 0.3rem;
+      font-size: 0.73rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-mid); padding-top: 0.3rem;
     }
-    .exp-content h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; margin-bottom: 0.2rem; }
+    .exp-content h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.2rem; }
     .exp-company { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.7rem; }
     .exp-content p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; }
 
@@ -234,7 +234,7 @@
       margin-bottom: 0.6rem;
     }
     .beyond-block h3 {
-      font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 600;
       margin-bottom: 0.4rem;
     }
     .beyond-link {
@@ -254,11 +254,12 @@
     .dj-photo-wrap {
       margin-bottom: 1.2rem; border-radius: 12px; overflow: hidden;
       border: 1px solid var(--border);
-      max-width: 480px;
+      max-width: 480px; height: 340px;
     }
     .dj-photo {
-      width: 100%; height: auto; display: block;
-      object-fit: cover; max-height: 400px;
+      width: 100%; height: 100%; display: block;
+      object-fit: cover;
+      object-position: center 30%;
       filter: grayscale(10%);
       transition: filter 0.4s var(--ease);
     }
@@ -339,7 +340,7 @@
     }
     .contact-left h2 {
       font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      font-weight: 400; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem;
+      font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem;
     }
     .contact-left p { font-size: 1rem; color: rgba(255,255,255,0.5); max-width: 380px; line-height: 1.8; }
     .contact-right { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; }
@@ -406,12 +407,11 @@
 <!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-label">Product Manager</div>
-  <h1>Strategy meets <em>execution</em></h1>
+  <h1>Chanelle Wang</h1>
   <p class="hero-sub">
-    I'm a PM who drives business outcomes through rigorous research, 
-    data-backed decisions, and hands-on building. 6+ years across 
-    Amazon, ZS Associates, and EY — with a passion for AI, healthcare, 
-    and consumer products.
+    Product manager with 6+ years across Amazon, ZS Associates, and EY. 
+    MBA at UCLA Anderson. I build AI products, run GTM strategy, 
+    and do the user research myself.
   </p>
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -427,23 +427,21 @@
     <div class="side-label reveal">About Me</div>
     <div class="about-body reveal">
       <p>
-        I'm a product manager who doesn't stop at the strategy deck. I define 
-        the roadmap, build the prototype, run the analysis, and align the room — 
-        from VP-level stakeholders to engineering partners.
+        I'm a product manager who does the full job — roadmaps, prototypes, 
+        user research, financial models, and stakeholder alignment.
       </p>
       <p>
         At Amazon, I owned a product roadmap for a $72M contextual shopping opportunity, 
         partnering with 5 AI/ML teams to ship behavioral signals into the DEX 2026 
         roadmap. At ZS Associates, I drove $90M+ in incremental sales leading 
         go-to-market strategy for oncology and rare disease products. I've conducted 
-        400+ user interviews, built financial models, and authored industry thought 
-        leadership distributed to 1,000+ professionals.
+        400+ user interviews and built financial models across healthcare, consumer, 
+        and enterprise.
       </p>
       <p>
-        I'm currently finishing my MBA at UCLA Anderson (Healthcare Management & 
-        Marketing, Jun 2026) and building AI-powered products — including Pulse, 
-        a clinical decision support tool. I'm looking for PM roles where I can 
-        combine analytical rigor with creative product thinking.
+        Currently finishing my MBA at UCLA Anderson (Healthcare Management & 
+        Marketing, Jun 2026) and building AI products independently — including Pulse, 
+        a clinical decision support tool. Looking for PM roles across industries.
       </p>
 
       <div class="snapshot">
@@ -461,7 +459,7 @@
         </div>
         <div class="snapshot-item">
           <div class="snapshot-label">What Makes Me Different</div>
-          <div class="snapshot-value">Consulting rigor + technical builder — I ship the strategy, not just the slide</div>
+          <div class="snapshot-value">Consulting background + hands-on builder. I do both the strategy and the prototype.</div>
         </div>
       </div>
 
@@ -547,7 +545,7 @@
 <section class="padded projects-bg" id="projects">
   <div class="projects-header reveal">
     <div class="side-label">Selected Work</div>
-    <h2>How I think, build, and ship</h2>
+    <h2>Selected Projects</h2>
   </div>
 
   <div class="project-item reveal">
@@ -765,9 +763,7 @@
           </a>
         </div>
         <p class="beyond-desc">
-          I DJ and produce music as Chanelle No. 5. Sound design is just 
-          product thinking with a different medium — understanding your audience, 
-          building tension, and knowing when to drop.
+          I DJ and produce music as Chanelle No. 5 on SoundCloud.
         </p>
         <div class="dj-photo-wrap">
           <img src="dj-photo.jpeg" alt="Chanelle Wang DJing" class="dj-photo">
@@ -790,9 +786,8 @@
           <h3>Curaçao 2023 — Travel Zine</h3>
         </div>
         <p class="beyond-desc">
-          A digital magazine featuring 35mm film photos from my travels. 
-          I designed, shot, and self-published it — and sold copies. Click 
-          below to flip through it.
+          A digital magazine I designed and self-published featuring 35mm film 
+          photos from my travels. I sold copies of this one.
         </p>
         <div class="zine-preview" onclick="document.getElementById('zineModal').classList.add('active')">
           <div class="zine-preview-inner">
@@ -809,9 +804,7 @@
       <div class="beyond-block beyond-block-compact">
         <h3>Martial Arts & Fitness</h3>
         <p class="beyond-desc">
-          Black belt in Tae Kwon Do. Also into pilates, kickboxing, and badminton. 
-          Discipline in training translates directly to how I approach product work — 
-          consistency, focus, and always getting back up.
+          Black belt in Tae Kwon Do. Also into pilates, kickboxing, and badminton.
         </p>
       </div>
 
@@ -843,11 +836,10 @@
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="contact-left reveal">
-      <h2>Let's build something <em>worth shipping</em></h2>
+      <h2>Get in touch</h2>
       <p>
-        Open to product manager roles across industries — especially 
-        excited about AI, consumer, healthcare, and anything where 
-        the details matter.
+        Open to product manager roles across industries. 
+        Interested in AI, consumer, healthcare, and enterprise.
       </p>
     </div>
     <div class="contact-right reveal">
