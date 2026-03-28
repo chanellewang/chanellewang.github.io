@@ -3,384 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chanelle Wang — Product Manager</title>
+  <title>Chanelle Wang</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #FAFAF7;
-      --bg-alt: #F0EEEA;
-      --bg-dark: #1A1915;
-      --text: #1A1915;
-      --text-mid: #6B6860;
-      --text-light: #9B978E;
-      --accent: #2E5C4F;
-      --accent-soft: #E8F0EC;
-      --warm: #C4A882;
-      --border: #E2DFD8;
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'Libre Franklin', -apple-system, sans-serif;
-      --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --bg:#FAF9F6;--bg-alt:#F0EEEA;--text:#1A1915;--text-mid:#6B6860;--text-soft:#9B978E;
+      --accent:#2E5C4F;--accent-soft:#E8F0EC;--border:#E2DFD8;
+      --serif:'Playfair Display',Georgia,serif;--sans:'Libre Franklin',-apple-system,sans-serif;
+      --ease:cubic-bezier(0.25,0.1,0.25,1);
     }
- 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
- 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);font-weight:300;color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;background:var(--bg);overflow-x:hidden;}
+    ::selection{background:var(--accent);color:#fff;}
+    a{color:inherit;}
+
+    /* NAV */
+    nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 4rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,249,246,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transform:translateY(-100%);transition:transform 0.4s var(--ease);}
+    nav.visible{transform:translateY(0);}
+    .nav-name{font-family:var(--serif);font-size:1rem;font-weight:500;text-decoration:none;}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{text-decoration:none;font-size:0.7rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);transition:color 0.3s;}
+    .nav-links a:hover{color:var(--text);}
+
+    /* HERO */
+    .hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:4rem 2rem 3rem;}
+    .hero-photo-wrap{width:120px;height:120px;border-radius:50%;overflow:hidden;margin-bottom:1rem;border:3px solid var(--border);opacity:0;animation:fadeIn 0.8s 0.1s forwards;}
+    .hero-photo{width:100%;height:100%;object-fit:cover;object-position:center 50%;}
+    .hero-label{font-size:0.68rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-mid);margin-bottom:0.8rem;opacity:0;animation:fadeIn 0.8s 0.2s forwards;}
+    .hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:600;line-height:1.05;letter-spacing:-0.03em;opacity:0;animation:fadeIn 0.8s 0.3s forwards;}
+    .hero-sub{font-size:0.92rem;color:var(--text);max-width:500px;margin:1rem auto 0;line-height:1.7;font-weight:300;opacity:0;animation:fadeIn 0.8s 0.5s forwards;}
+    .jump-to{display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;margin-top:1.2rem;opacity:0;animation:fadeIn 0.8s 0.7s forwards;}
+    .jump-btn{padding:0.45rem 1.1rem;border:1.5px solid var(--border);border-radius:100px;font-size:0.72rem;font-weight:400;color:var(--text-mid);text-decoration:none;transition:all 0.3s;}
+    .jump-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+
+    /* FLOATING IMAGES - Kinfolk parallax */
+    .float-image{position:relative;width:100%;overflow:hidden;}
+    .float-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.1s linear;}
+    .float-image-tall{height:70vh;}.float-image-mid{height:45vh;}.float-image-short{height:30vh;}
+    .float-image-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem;color:#fff;}
+    .float-image-overlay.center{justify-content:center;align-items:center;text-align:center;}
+    .float-image-overlay h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:500;letter-spacing:-0.02em;line-height:1.2;text-shadow:0 2px 30px rgba(0,0,0,0.3);}
+    .float-image-overlay p{font-size:0.85rem;opacity:0.85;margin-top:0.5rem;text-shadow:0 1px 10px rgba(0,0,0,0.3);}
+    .float-gradient{background:linear-gradient(transparent 30%,rgba(26,25,21,0.5));}
+    .float-gradient-center{background:rgba(26,25,21,0.3);}
+
+    /* SECTIONS */
+    .divider{width:100%;max-width:1100px;margin:0 auto;height:1px;background:var(--border);}
+    .side-label{font-family:var(--serif);font-size:0.75rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--text);padding-top:0.3rem;}
+    .two-col{display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:start;max-width:1100px;margin:0 auto;}
+    section.padded{padding:4.5rem 4rem;}
+
+    /* ABOUT */
+    .about-body p{font-size:0.95rem;color:var(--text-mid);margin-bottom:1rem;line-height:1.75;}
+    .about-body p:first-child{font-size:1.05rem;color:var(--text);font-weight:400;line-height:1.7;}
+    .ai-tools{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+    .ai-tools-label{font-family:var(--serif);font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.7rem;}
+    .ai-tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+    .ai-tool{padding:0.8rem 0.9rem;background:var(--accent-soft);border-radius:10px;border:1px solid rgba(46,92,79,0.08);}
+    .ai-tool-name{font-size:0.8rem;font-weight:500;color:var(--accent);margin-bottom:0.1rem;}
+    .ai-tool-desc{font-size:0.7rem;color:var(--text-mid);line-height:1.4;}
+    .about-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:1.2rem;}
+    .about-tags span{padding:0.3rem 0.8rem;border-radius:100px;font-size:0.68rem;border:1px solid var(--border);color:var(--text-mid);transition:all 0.3s;}
+    .about-tags span:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+
+    /* STATS */
+    .stats-section{background:var(--bg-alt);}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1100px;margin:0 auto;}
+    .stat-item{text-align:center;}
+    .stat-number{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:600;color:var(--accent);line-height:1.1;margin-bottom:0.3rem;}
+    .stat-label{font-size:0.75rem;color:var(--text-mid);line-height:1.4;}
+
+    /* PROJECTS */
+    .projects-header{max-width:1100px;margin:0 auto 2.5rem;display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:end;}
+    .projects-header h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:600;letter-spacing:-0.02em;}
+    .project-card{max-width:1100px;margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);}
+    .project-card:last-child{border-bottom:1px solid var(--border);}
+    .project-top{display:grid;grid-template-columns:220px 1fr auto;gap:4rem;align-items:start;margin-bottom:1.2rem;}
+    .project-num{font-family:var(--serif);font-size:0.85rem;color:var(--text-soft);}
+    .project-type{font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.2rem;}
+    .project-title{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;line-height:1.3;}
+    .project-tags{display:flex;flex-wrap:wrap;gap:0.25rem;justify-content:flex-end;max-width:180px;}
+    .project-tags span{padding:0.18rem 0.55rem;border-radius:4px;font-size:0.58rem;background:var(--bg-alt);color:var(--text-mid);}
+    .project-body{display:grid;grid-template-columns:220px 1fr;gap:4rem;}
+    .project-body-label{font-size:0.6rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-soft);}
+    .project-body-content p{font-size:0.85rem;color:var(--text-mid);line-height:1.7;margin-bottom:0.8rem;}
+    .project-body-content p:last-child{margin-bottom:0;}
+    .project-links{display:flex;gap:0.8rem;margin-top:0.8rem;}
+    .project-link{display:inline-flex;align-items:center;gap:0.3rem;color:var(--accent);text-decoration:none;font-size:0.75rem;transition:gap 0.3s;}.project-link:hover{gap:0.5rem;}
+    .project-link svg{width:10px;height:10px;}
+
+    /* BEYOND */
+    .beyond-content{display:flex;flex-direction:column;gap:2rem;}
+    .beyond-block{padding-bottom:2rem;border-bottom:1px solid var(--border);}
+    .beyond-block:last-child{border-bottom:none;padding-bottom:0;}
+    .beyond-block-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.3rem;}
+    .beyond-block h3{font-family:var(--serif);font-size:1.05rem;font-weight:600;}
+    .beyond-link{font-size:0.72rem;color:var(--accent);text-decoration:none;}.beyond-link:hover{color:var(--text);}
+    .beyond-desc{font-size:0.85rem;color:var(--text-mid);margin-bottom:1rem;max-width:520px;line-height:1.6;}
+    .dj-photos-row{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.8rem;}
+    .dj-photo-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);height:260px;}
+    .dj-photo{width:100%;height:100%;display:block;object-fit:cover;object-position:center 65%;filter:grayscale(10%);transition:filter 0.4s;}.dj-photo:hover{filter:grayscale(0%);}
+    .soundcloud-embed{border-radius:8px;overflow:hidden;border:1px solid var(--border);}.soundcloud-embed iframe{display:block;}
+    .zine-preview{cursor:pointer;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-alt);transition:all 0.4s var(--ease);}
+    .zine-preview:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.06);}
+    .zine-preview-inner{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;}
+    .zine-preview-icon{font-size:1.8rem;}
+    .zine-preview-title{font-family:var(--serif);font-size:0.95rem;font-weight:500;letter-spacing:0.06em;display:block;margin-bottom:0.1rem;}
+    .zine-preview-sub{font-size:0.75rem;color:var(--accent);display:block;}
+    .zine-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,25,21,0.85);backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s;}.zine-modal.active{opacity:1;pointer-events:all;}
+    .zine-modal-content{background:var(--bg);border-radius:16px;width:90vw;max-width:900px;height:80vh;max-height:700px;position:relative;overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px) scale(0.97);transition:transform 0.4s;}.zine-modal.active .zine-modal-content{transform:translateY(0) scale(1);}
+    .zine-modal-close{position:absolute;top:1rem;right:1.2rem;z-index:10;background:var(--bg-alt);border:1px solid var(--border);width:34px;height:34px;border-radius:50%;font-size:0.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-mid);transition:all 0.3s;}.zine-modal-close:hover{background:var(--text);color:#fff;}
+    .zine-modal-header{padding:1.2rem 1.5rem 0.6rem;}.zine-modal-header h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:0.1rem;}.zine-modal-header p{font-size:0.78rem;color:var(--text-mid);}
+    .zine-modal-embed{flex:1;padding:0 1rem 1rem;min-height:0;}.zine-modal-embed iframe{width:100%;height:100%;border:none;border-radius:8px;}
+
+    /* CONTACT */
+    .contact{background:var(--bg-alt);padding:4.5rem 4rem;}
+    .contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;}
+    .contact-left h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;letter-spacing:-0.02em;margin-bottom:0.6rem;}
+    .contact-left p{font-size:0.88rem;color:var(--text-mid);max-width:360px;line-height:1.7;}
+    .contact-email{margin-top:1rem;}
+    .contact-email a{color:var(--accent);text-decoration:none;font-size:0.92rem;transition:color 0.3s;}.contact-email a:hover{color:var(--text);}
+    .contact-logos{display:flex;gap:1rem;align-items:center;}
+    .contact-logo-link{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:var(--bg);border:1px solid var(--border);color:var(--text);transition:all 0.3s;}.contact-logo-link:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.06);color:var(--accent);border-color:var(--accent);}
+    .contact-logo-link svg{width:20px;height:20px;}
+    .footer-bottom{max-width:1100px;margin:3rem auto 0;padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);}
+    .footer-copy{font-size:0.65rem;color:var(--text-soft);}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(20px);transition:all 0.6s var(--ease);}.reveal.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:900px){
+      nav{padding:0.8rem 1.5rem;}section.padded{padding:3rem 1.5rem;}.contact{padding:3rem 1.5rem;}
+      .two-col,.projects-header,.project-top,.project-body{grid-template-columns:1fr;gap:1rem;}
+      .project-tags{justify-content:flex-start;max-width:none;}.project-num{display:none;}
+      .stats-grid{grid-template-columns:1fr 1fr;}.contact-inner{grid-template-columns:1fr;gap:2rem;}
+      .ai-tools-grid{grid-template-columns:1fr;}.dj-photos-row{grid-template-columns:1fr;}
+      .float-image-overlay{padding:2rem;}
     }
- 
-    ::selection { background: var(--accent); color: #fff; }
-    a { color: inherit; }
- 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      padding: 1.5rem 4rem;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(250,250,247,0.92);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      transition: all 0.4s var(--ease);
-    }
-    nav.scrolled { padding: 1rem 4rem; border-bottom: 1px solid var(--border); }
-    .nav-name {
-      font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
-      text-decoration: none; letter-spacing: 0.02em;
-    }
-    .nav-links { display: flex; gap: 3rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none; font-size: 0.76rem; font-weight: 400;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-mid); transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--text); }
- 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      padding: 8rem 2rem 6rem; position: relative;
-    }
-    .hero-photo-wrap {
-      width: 160px; height: 160px; border-radius: 50%; overflow: hidden;
-      margin-bottom: 2rem; border: 3px solid var(--border);
-      opacity: 0; animation: fadeIn 1s 0.1s forwards;
-    }
-    .hero-photo {
-      width: 100%; height: 100%; object-fit: cover; object-position: center 50%;
-    }
-    .hero-label {
-      font-size: 0.74rem; font-weight: 500; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--text-mid); margin-bottom: 2.5rem;
-      opacity: 0; animation: fadeIn 1s 0.2s forwards;
-    }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      font-weight: 600; line-height: 1.05; letter-spacing: -0.03em;
-      max-width: 950px; opacity: 0; animation: fadeIn 1s 0.4s forwards;
-    }
-    .hero h1 em { font-style: italic; }
-    .hero-sub {
-      font-size: 1.08rem; color: var(--text); max-width: 580px;
-      margin: 2.5rem auto 0; line-height: 1.85; font-weight: 300;
-      opacity: 0; animation: fadeIn 1s 0.7s forwards;
-    }
-    .hero-scroll {
-      position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
-      color: var(--text-light); font-size: 0.66rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      opacity: 0; animation: fadeIn 1s 1s forwards;
-    }
-    .scroll-line { width: 1px; height: 40px; background: var(--border); position: relative; overflow: hidden; }
-    .scroll-line::after {
-      content:''; position: absolute; top: -100%; left: 0;
-      width: 100%; height: 100%; background: var(--accent);
-      animation: scrollDown 2s infinite;
-    }
-    @keyframes scrollDown { 0%{top:-100%} 100%{top:100%} }
- 
-    /* ── SHARED LAYOUT ── */
-    .divider { width: 100%; max-width: 1200px; margin: 0 auto; height: 1px; background: var(--border); }
- 
-    .side-label {
-      font-family: var(--serif); font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text);
-      padding-top: 0.3rem;
-    }
- 
-    .two-col {
-      display: grid; grid-template-columns: 260px 1fr;
-      gap: 6rem; align-items: start;
-      max-width: 1200px; margin: 0 auto;
-    }
- 
-    section.padded { padding: 7rem 4rem; }
- 
-    /* ── ABOUT ── */
-    .about-body p { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 1.6rem; }
-    .about-body p:first-child { font-size: 1.2rem; color: var(--text); font-weight: 400; line-height: 1.7; }
- 
-    .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-    .about-tags span {
-      padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.73rem;
-      font-weight: 400; letter-spacing: 0.03em;
-      border: 1px solid var(--border); color: var(--text-mid); transition: all 0.3s;
-    }
-    .about-tags span:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
- 
-    /* ── STATS ── */
-    .stats-section { background: var(--bg-alt); }
-    .stats-header { max-width: 1200px; margin: 0 auto 3rem; }
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 3rem; max-width: 1200px; margin: 0 auto;
-    }
-    .stat-item { text-align: center; }
-    .stat-number {
-      font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.2rem);
-      font-weight: 600; letter-spacing: -0.02em;
-      color: var(--accent); line-height: 1.1;
-      margin-bottom: 0.6rem;
-    }
-    .stat-label {
-      font-size: 0.82rem; font-weight: 400; color: var(--text-mid);
-      line-height: 1.5; letter-spacing: 0.02em;
-    }
- 
-    /* ── PROJECTS ── */
-    .projects-bg { background: var(--bg); }
-    .projects-header {
-      display: grid; grid-template-columns: 260px 1fr;
-      gap: 6rem; margin-bottom: 4rem; align-items: end;
-      max-width: 1200px; margin-left: auto; margin-right: auto; margin-bottom: 4rem;
-    }
-    .projects-header h2 {
-      font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;
-    }
-    .project-item {
-      border-top: 1px solid var(--border); padding: 2.8rem 0;
-      display: grid; grid-template-columns: 48px 220px 1fr auto;
-      gap: 2.5rem; align-items: start;
-      transition: all 0.4s var(--ease); cursor: default;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .project-item:last-child { border-bottom: 1px solid var(--border); }
-    .project-item:hover { padding-left: 0.8rem; }
-    .project-num { font-family: var(--serif); font-size: 0.95rem; color: var(--text-light); padding-top: 0.15rem; }
-    .project-type {
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
-    }
-    .project-title {
-      font-family: var(--serif); font-size: 1.5rem; font-weight: 600;
-      letter-spacing: -0.01em; line-height: 1.3;
-    }
-    .project-desc { font-size: 0.93rem; color: var(--text-mid); line-height: 1.75; max-width: 480px; }
-    .project-link-inline {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      color: var(--accent); text-decoration: none; font-size: 0.8rem;
-      font-weight: 400; margin-top: 0.8rem; transition: gap 0.3s;
-    }
-    .project-link-inline:hover { gap: 0.7rem; }
-    .project-link-inline svg { width: 12px; height: 12px; }
-    .project-tags {
-      display: flex; flex-wrap: wrap; gap: 0.35rem; padding-top: 0.15rem;
-      justify-content: flex-end; max-width: 190px;
-    }
-    .project-tags span {
-      padding: 0.25rem 0.65rem; border-radius: 4px; font-size: 0.63rem;
-      font-weight: 400; letter-spacing: 0.03em; background: var(--bg-alt); color: var(--text-mid);
-    }
- 
-    /* ── BEYOND WORK ── */
-    .beyond-content { display: flex; flex-direction: column; gap: 3rem; }
-    .beyond-block {
-      padding-bottom: 3rem; border-bottom: 1px solid var(--border);
-    }
-    .beyond-block:last-child { border-bottom: none; padding-bottom: 0; }
-    .beyond-block-compact { }
-    .beyond-block-header {
-      display: flex; justify-content: space-between; align-items: baseline;
-      margin-bottom: 0.6rem;
-    }
-    .beyond-block h3 {
-      font-family: var(--serif); font-size: 1.2rem; font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-    .beyond-link {
-      font-size: 0.78rem; color: var(--accent); text-decoration: none;
-      font-weight: 400; transition: color 0.3s;
-    }
-    .beyond-link:hover { color: var(--text); }
-    .beyond-desc {
-      font-size: 0.93rem; color: var(--text-mid); line-height: 1.75;
-      margin-bottom: 1.5rem; max-width: 560px;
-    }
-    .soundcloud-embed {
-      border-radius: 8px; overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .soundcloud-embed iframe { display: block; }
-    .dj-photos-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .dj-photo-wrap {
-      border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--border);
-      height: 350px;
-    }
-    .dj-photo {
-      width: 100%; height: 100%; display: block;
-      object-fit: cover;
-      object-position: center 65%;
-      filter: grayscale(10%);
-      transition: filter 0.4s var(--ease);
-    }
-    .dj-photo:hover { filter: grayscale(0%); }
- 
-    /* Zine preview card */
-    .zine-preview {
-      cursor: pointer; border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--border); background: var(--bg-alt);
-      transition: all 0.4s var(--ease);
-    }
-    .zine-preview:hover {
-      border-color: var(--accent); transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
-    .zine-preview-inner {
-      display: flex; align-items: center; gap: 1.5rem;
-      padding: 2rem 2.5rem;
-    }
-    .zine-preview-icon { font-size: 2.5rem; }
-    .zine-preview-title {
-      font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
-      letter-spacing: 0.08em; display: block; margin-bottom: 0.2rem;
-    }
-    .zine-preview-sub {
-      font-size: 0.82rem; color: var(--accent); display: block;
-    }
- 
-    /* Zine modal */
-    .zine-modal {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(26,25,21,0.85); backdrop-filter: blur(8px);
-      z-index: 1000; display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease);
-    }
-    .zine-modal.active { opacity: 1; pointer-events: all; }
-    .zine-modal-content {
-      background: var(--bg); border-radius: 16px; width: 90vw; max-width: 900px;
-      height: 80vh; max-height: 700px; position: relative; overflow: hidden;
-      display: flex; flex-direction: column;
-      transform: translateY(20px) scale(0.97);
-      transition: transform 0.4s var(--ease);
-    }
-    .zine-modal.active .zine-modal-content {
-      transform: translateY(0) scale(1);
-    }
-    .zine-modal-close {
-      position: absolute; top: 1rem; right: 1.2rem; z-index: 10;
-      background: var(--bg-alt); border: 1px solid var(--border);
-      width: 36px; height: 36px; border-radius: 50%;
-      font-size: 0.9rem; cursor: pointer; display: flex;
-      align-items: center; justify-content: center;
-      transition: all 0.3s; color: var(--text-mid);
-    }
-    .zine-modal-close:hover { background: var(--text); color: #fff; }
-    .zine-modal-header { padding: 1.8rem 2rem 1rem; }
-    .zine-modal-header h3 {
-      font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
-      margin-bottom: 0.2rem;
-    }
-    .zine-modal-header p { font-size: 0.85rem; color: var(--text-mid); }
-    .zine-modal-embed { flex: 1; padding: 0 1.5rem 1.5rem; min-height: 0; }
-    .zine-modal-embed iframe { width: 100%; height: 100%; border: none; border-radius: 8px; }
- 
-    /* ── CONTACT ── */
-    .contact { background: var(--bg-alt); padding: 8rem 4rem; }
-    .contact-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr auto; gap: 6rem; align-items: center;
-    }
-    .contact-left h2 {
-      font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem;
-    }
-    .contact-left p { font-size: 1rem; color: var(--text-mid); max-width: 420px; line-height: 1.8; }
-    .contact-email { margin-top: 1.5rem; }
-    .contact-email a {
-      color: var(--accent); text-decoration: none; font-size: 1.05rem;
-      font-weight: 400; transition: color 0.3s;
-    }
-    .contact-email a:hover { color: var(--text); }
-    .contact-right { display: flex; align-items: center; }
-    .contact-logos { display: flex; gap: 1.2rem; align-items: center; }
-    .contact-logo-link {
-      display: flex; align-items: center; justify-content: center;
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--bg); border: 1px solid var(--border);
-      color: var(--text); transition: all 0.3s var(--ease);
-    }
-    .contact-logo-link:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      color: var(--accent); border-color: var(--accent);
-    }
-    .contact-logo-link svg { width: 24px; height: 24px; }
- 
-    .footer-bottom {
-      max-width: 1200px; margin: 5rem auto 0; padding-top: 4rem;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid var(--border);
-    }
-    .footer-copy { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.05em; }
- 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s var(--ease); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
- 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1000px) {
-      nav { padding: 1.2rem 2rem; }
-      nav.scrolled { padding: 1rem 2rem; }
-      section.padded { padding: 5rem 2rem; }
-      .two-col, .projects-header { grid-template-columns: 1fr; gap: 1.5rem; }
-      .project-item { grid-template-columns: 1fr; gap: 0.8rem; }
-      .project-num { display: none; }
-      .project-tags { justify-content: flex-start; max-width: none; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .contact { padding: 5rem 2rem; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .dj-photos-row { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .hero { padding: 7rem 1.5rem 5rem; }
-      section.padded { padding: 4rem 1.5rem; }
-      .contact { padding: 4rem 1.5rem; }
-      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-      .stats-grid { grid-template-columns: 1fr; gap: 2rem; }
+    @media(max-width:600px){
+      .nav-links{display:none;}.hero{padding:3.5rem 1.5rem 2.5rem;}section.padded{padding:2.5rem 1.5rem;}
+      .contact{padding:2.5rem 1.5rem;}.footer-bottom{flex-direction:column;gap:0.8rem;text-align:center;}
+      .stats-grid{grid-template-columns:1fr;gap:1.5rem;}.jump-to{gap:0.4rem;}
+      .float-image-tall{height:50vh;}.float-image-mid{height:35vh;}
     }
   </style>
 </head>
 <body>
- 
+
 <nav id="nav">
   <a href="#" class="nav-name">Chanelle Wang</a>
   <ul class="nav-links">
@@ -391,311 +163,183 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
- 
-<!-- ── HERO ── -->
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-photo-wrap">
-    <img src="headshot.jpeg" alt="Chanelle Wang" class="hero-photo">
-  </div>
+  <div class="hero-photo-wrap"><img src="headshot.jpeg" alt="Chanelle Wang" class="hero-photo"></div>
   <div class="hero-label">Product Manager</div>
   <h1>Chanelle Wang</h1>
   <p class="hero-sub">
-    AI-native PM with 6+ years across Amazon, ZS Associates, and EY. 
-    MBA at UCLA Anderson. Strong product intuition, evaluation expertise, 
-    and hands-on prototyping experience using LLMs, agents, and 
-    workflow orchestration tools.
+    AI-native PM with 6+ years of experience across Amazon, ZS Associates, and EY.
+    MBA at UCLA Anderson. Strong product intuition, evaluation expertise,
+    and hands-on prototyping using LLMs, agents, and workflow orchestration tools.
   </p>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+  <div class="jump-to">
+    <a href="#about" class="jump-btn">About Me</a>
+    <a href="#stats" class="jump-btn">Highlights</a>
+    <a href="#projects" class="jump-btn">Projects</a>
+    <a href="#beyond" class="jump-btn">Beyond Work</a>
+    <a href="#contact" class="jump-btn">Contact</a>
   </div>
 </section>
- 
-<div class="divider"></div>
- 
-<!-- ── ABOUT ── -->
+
+<!-- FLOATING IMAGE 1 - mirror selfie -->
+<div class="float-image float-image-mid reveal">
+  <img src="mirror-photo.jpeg" alt="" style="object-position:center 35%;" id="parallax1">
+</div>
+
+<!-- ABOUT -->
 <section class="padded" id="about">
   <div class="two-col">
     <div class="side-label reveal">About Me</div>
     <div class="about-body reveal">
       <p>
-        I'm a product manager who does the full job — roadmaps, prototypes, 
-        user research, financial models, and stakeholder alignment.
+        AI-native PM with 6+ years of experience across Amazon, ZS Associates, and EY.
+        I write the PRD, then build the demo. I define the metrics framework,
+        then run the analysis. The best PMs close the gap between strategy and execution.
       </p>
       <p>
-        Most recently at Amazon (DEX), previously at ZS Associates (healthcare consulting) 
-        and EY (biotech & tech). Currently finishing my MBA at UCLA Anderson and building 
-        AI products independently. Looking for PM roles across industries.
+        Most recently at Amazon (DEX), previously at ZS Associates (healthcare consulting)
+        and EY (biotech and tech). Currently finishing my MBA at UCLA Anderson and building
+        AI products independently. Open to PM roles across industries.
       </p>
+
+      <div class="ai-tools">
+        <div class="ai-tools-label">How I Use AI Daily</div>
+        <div class="ai-tools-grid">
+          <div class="ai-tool"><div class="ai-tool-name">Cursor + Claude</div><div class="ai-tool-desc">Vibe coding. I build working prototypes directly, not just specs.</div></div>
+          <div class="ai-tool"><div class="ai-tool-name">Claude + Obsidian + Google Drive</div><div class="ai-tool-desc">My "second brain" for research, synthesis, and knowledge management.</div></div>
+          <div class="ai-tool"><div class="ai-tool-name">Figma Make</div><div class="ai-tool-desc">AI-assisted prototyping and design iteration.</div></div>
+          <div class="ai-tool"><div class="ai-tool-name">OpenAI Agent Builder</div><div class="ai-tool-desc">Building custom agents for workflow automation and testing.</div></div>
+        </div>
+      </div>
+
       <div class="about-tags">
-        <span>Product Roadmaps</span>
-        <span>User Research</span>
-        <span>GTM Strategy</span>
-        <span>A/B Testing</span>
-        <span>Financial Modeling</span>
-        <span>AI / ML Products</span>
-        <span>Prototyping</span>
-        <span>SQL</span>
-        <span>Python</span>
-        <span>R / STATA</span>
-        <span>Tableau</span>
-        <span>Figma</span>
-        <span>Salesforce</span>
-        <span>Agile</span>
-        <span>OpenAI / Claude</span>
-        <span>Cursor</span>
+        <span>Product Roadmaps</span><span>User Research</span><span>GTM Strategy</span>
+        <span>A/B Testing</span><span>Financial Modeling</span><span>AI / ML Products</span>
+        <span>Prototyping</span><span>SQL</span><span>Python</span><span>R / STATA</span>
+        <span>Tableau</span><span>Figma</span><span>Salesforce</span><span>Agile</span>
+        <span>OpenAI / Claude</span><span>Cursor</span>
       </div>
     </div>
   </div>
 </section>
- 
-<!-- ── STATS ── -->
+
+<!-- STATS -->
 <section class="padded stats-section" id="stats">
-  <div class="stats-header reveal">
-    <div class="side-label">Career Highlights</div>
-  </div>
   <div class="stats-grid reveal">
-    <div class="stat-item">
-      <div class="stat-number">$72M</div>
-      <div class="stat-label">Product Opportunity<br>Identified at Amazon</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">6+</div>
-      <div class="stat-label">Years of<br>Experience</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">400+</div>
-      <div class="stat-label">User Interviews<br>Conducted</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">30+</div>
-      <div class="stat-label">Successful<br>Projects</div>
-    </div>
+    <div class="stat-item"><div class="stat-number">$72M</div><div class="stat-label">Product Opportunity<br>Identified at Amazon</div></div>
+    <div class="stat-item"><div class="stat-number">6+</div><div class="stat-label">Years of<br>Experience</div></div>
+    <div class="stat-item"><div class="stat-number">400+</div><div class="stat-label">User Interviews<br>Conducted</div></div>
+    <div class="stat-item"><div class="stat-number">30+</div><div class="stat-label">Successful<br>Projects</div></div>
   </div>
 </section>
- 
-<!-- ── PROJECTS ── -->
-<section class="padded projects-bg" id="projects">
-  <div class="projects-header reveal">
-    <div class="side-label">Selected Work</div>
-    <h2>Personal Projects</h2>
-  </div>
- 
-  <div class="project-item reveal">
-    <div class="project-num">01</div>
-    <div class="project-meta">
-      <div class="project-type">Healthcare · AI</div>
-      <div class="project-title">Pulse</div>
+
+<!-- FLOATING IMAGE 2 - coffee still life -->
+<div class="float-image float-image-mid reveal">
+  <img src="coffee-photo.jpeg" alt="" style="object-position:center 60%;" id="parallax2">
+</div>
+
+<!-- PROJECTS -->
+<section class="padded" id="projects">
+  <!-- PULSE -->
+  <div class="project-card reveal">
+    <div class="project-top">
+      <div class="project-num">01</div>
+      <div class="project-meta"><div class="project-type">Healthcare · AI</div><div class="project-title">Pulse</div></div>
+      <div class="project-tags"><span>Product Strategy</span><span>FHIR / EHR</span><span>GPT-4</span><span>User Research</span></div>
     </div>
-    <div class="project-desc">
-      AI-powered platform converting fragmented EHR data into pre-visit briefings 
-      for physicians. FHIR integration, GPT-4 synthesis, care gap detection, and 
-      audio briefings — addressing the physician burnout crisis.
-      <br>
-      <a href="https://pulse-three-rho.vercel.app" target="_blank" class="project-link-inline">
-        View Live Demo
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-      &nbsp;&nbsp;
-      <a href="https://github.com/chanellewang/Pulse" target="_blank" class="project-link-inline">
-        GitHub
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
+    <div class="project-body">
+      <div class="project-body-label">The Problem</div>
+      <div class="project-body-content">
+        <p>Physicians spend 30 to 60 minutes each day preparing for clinic visits, often during personal time. Patient information is scattered across lab results, imaging, medication histories, specialist notes, and external records. Chart fragmentation was rated the number one daily friction point in our research with 64 clinician survey responses and 22 interviews. 93% of physicians said they would feel better prepared if they had a consolidated view of their patients in advance.</p>
+        <p>Pulse converts fragmented EHR data into concise, patient-specific daily briefs delivered before clinic sessions. Each brief synthesizes what needs attention, what has changed since the last visit, and what to do next.</p>
+      </div>
     </div>
-    <div class="project-tags">
-      <span>Product Strategy</span>
-      <span>FHIR / EHR</span>
-      <span>GPT-4</span>
-      <span>User Research</span>
-      <span>Prototype</span>
+    <div class="project-body" style="margin-top:0.8rem;">
+      <div class="project-body-label">What I Learned</div>
+      <div class="project-body-content">
+        <p>Through competitive analysis, we concluded Pulse does not currently represent a defensible standalone venture. Abridge ($250M Series D, 200+ health systems) and OpenEvidence (40% of U.S. physicians in under two years) have distribution and capital advantages a startup cannot replicate. The recommendation was to pursue partnership or licensing. This taught me that product-market fit alone is not enough. Timing, defensibility, and distribution matter just as much.</p>
+        <div class="project-links">
+          <a href="https://pulse-three-rho.vercel.app" target="_blank" class="project-link">Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          <a href="https://github.com/chanellewang/Pulse" target="_blank" class="project-link">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </div>
     </div>
   </div>
- 
-  <div class="project-item reveal">
-    <div class="project-num">02</div>
-    <div class="project-meta">
-      <div class="project-type">Healthcare · Patient Engagement</div>
-      <div class="project-title">RecovrAI</div>
+
+  <!-- REMY -->
+  <div class="project-card reveal">
+    <div class="project-top">
+      <div class="project-num">02</div>
+      <div class="project-meta"><div class="project-type">Consumer · AI · Commerce</div><div class="project-title">Remy</div></div>
+      <div class="project-tags"><span>Computer Vision</span><span>Prompt Engineering</span><span>Affiliate Commerce</span></div>
     </div>
-    <div class="project-desc">
-      Conversational AI for post-discharge follow-up — monitors patient recovery, 
-      surfaces medication adherence risks, and escalates to care teams. Full 
-      product lifecycle from user interviews through A/B test design.
-      <br>
-      <a href="#" class="project-link-inline">
-        Case Study Coming Soon
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
+    <div class="project-body">
+      <div class="project-body-label">The Problem</div>
+      <div class="project-body-content">
+        <p>American households waste $1,500 of food per year. 30 to 40% of purchased food gets thrown away because people forget what they have or don't know what to cook with it. Existing recipe apps start with the recipe and ask you to buy ingredients. Remy flips this: it starts with what you already have.</p>
+        <p>An AI app that scans your fridge via photo, identifies ingredients and brands, and generates personalized recipes. Includes a commerce layer linking users to Walmart for missing ingredients.</p>
+      </div>
     </div>
-    <div class="project-tags">
-      <span>User Research</span>
-      <span>Personas</span>
-      <span>Conversation Design</span>
-      <span>A/B Testing</span>
-    </div>
-  </div>
- 
-  <div class="project-item reveal">
-    <div class="project-num">03</div>
-    <div class="project-meta">
-      <div class="project-type">Productivity · SaaS</div>
-      <div class="project-title">FlowDesk</div>
-    </div>
-    <div class="project-desc">
-      AI meeting copilot that auto-generates action items, detects blockers, and 
-      syncs follow-ups to project management tools. Built around the insight that 
-      71% of meetings are unproductive. Competitive analysis, roadmap, integration 
-      architecture, and working prototype.
-      <br>
-      <a href="#" class="project-link-inline">
-        Case Study Coming Soon
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-    </div>
-    <div class="project-tags">
-      <span>PRD</span>
-      <span>Competitive Analysis</span>
-      <span>Roadmap</span>
-      <span>API Design</span>
-      <span>Prototype</span>
+    <div class="project-body" style="margin-top:0.8rem;">
+      <div class="project-body-label">What I Learned</div>
+      <div class="project-body-content">
+        <p>Prompt design is product design. Every line in the system prompt maps to a product requirement or business goal. I also learned that the best AI products hide the AI. I built confidence scores and prompt transparency panels, then removed them all because they made the app feel like a demo instead of a product.</p>
+        <div class="project-links">
+          <a href="remy.html" class="project-link">Try Prototype <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          <a href="remy-case-study.html" class="project-link">Read Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </div>
     </div>
   </div>
- 
-  <div class="project-item reveal">
-    <div class="project-num">04</div>
-    <div class="project-meta">
-      <div class="project-type">Entertainment · Consumer</div>
-      <div class="project-title">CueUp</div>
-    </div>
-    <div class="project-desc">
-      AI-powered group decision engine for streaming — resolves the "what should 
-      we watch" problem using preference matching across platforms. User journey 
-      mapping, recommendation algorithm spec, metrics framework, and interactive prototype.
-      <br>
-      <a href="#" class="project-link-inline">
-        Case Study Coming Soon
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-    </div>
-    <div class="project-tags">
-      <span>User Journeys</span>
-      <span>Rec Algorithm</span>
-      <span>Metrics Design</span>
-      <span>B2C</span>
-      <span>Prototype</span>
-    </div>
-  </div>
+
 </section>
- 
-<div class="divider"></div>
- 
-<!-- ── BEYOND WORK ── -->
+
+<!-- FLOATING IMAGE 3 - vinyl shop -->
+<div class="float-image float-image-mid reveal">
+  <img src="vinyl-photo.jpeg" alt="" style="object-position:center 40%;" id="parallax3">
+</div>
+
+<!-- BEYOND WORK -->
 <section class="padded" id="beyond">
   <div class="two-col">
     <div class="side-label reveal">Beyond Work</div>
     <div class="beyond-content reveal">
- 
-      <!-- MUSIC -->
       <div class="beyond-block">
-        <div class="beyond-block-header">
-          <h3>Music & DJing</h3>
-          <a href="https://soundcloud.com/chanellewang" target="_blank" class="beyond-link">
-            SoundCloud ↗
-          </a>
-        </div>
-        <p class="beyond-desc">
-          I'm a pianist and cellist! I also DJ as DJ Dior and produce music as Chanelle No. 5 on SoundCloud.
-        </p>
-        <div class="dj-photos-row">
-          <div class="dj-photo-wrap">
-            <img src="dj-photo.jpeg" alt="Chanelle Wang DJing" class="dj-photo">
-          </div>
-          <div class="dj-photo-wrap">
-            <img src="dj-photo-2.jpeg" alt="Chanelle Wang DJing at night" class="dj-photo">
-          </div>
-        </div>
-        <div class="soundcloud-embed">
-          <iframe 
-            width="100%" 
-            height="166" 
-            scrolling="no" 
-            frameborder="no" 
-            allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chanellewang&color=%232E5C4F&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
-          </iframe>
-        </div>
+        <div class="beyond-block-header"><h3>Music & DJing</h3><a href="https://soundcloud.com/chanellewang" target="_blank" class="beyond-link">SoundCloud ↗</a></div>
+        <p class="beyond-desc">Pianist and cellist. I also DJ as DJ Dior and produce music as Chanelle No. 5 on SoundCloud.</p>
+        <div class="dj-photos-row"><div class="dj-photo-wrap"><img src="dj-photo.jpeg" alt="DJing" class="dj-photo"></div><div class="dj-photo-wrap"><img src="dj-photo-2.jpeg" alt="DJing at night" class="dj-photo"></div></div>
+        <div class="soundcloud-embed"><iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chanellewang&color=%232E5C4F&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe></div>
       </div>
- 
-      <!-- ZINE -->
       <div class="beyond-block">
-        <div class="beyond-block-header">
-          <h3>Curaçao 2023 — Travel Zine</h3>
-        </div>
-        <p class="beyond-desc">
-          A digital magazine I designed and self-published featuring 35mm film 
-          photos from my travels. I sold copies of this one.
-        </p>
-        <div class="zine-preview" onclick="document.getElementById('zineModal').classList.add('active')">
-          <div class="zine-preview-inner">
-            <div class="zine-preview-icon">📖</div>
-            <div class="zine-preview-text">
-              <span class="zine-preview-title">CURAÇAO 2023</span>
-              <span class="zine-preview-sub">Click to read the zine →</span>
-            </div>
-          </div>
-        </div>
+        <div class="beyond-block-header"><h3>Curacao 2023 Travel Zine</h3></div>
+        <p class="beyond-desc">A digital magazine I designed and self-published featuring 35mm film photos from my travels. I sold copies of this one.</p>
+        <div class="zine-preview" onclick="document.getElementById('zineModal').classList.add('active')"><div class="zine-preview-inner"><div class="zine-preview-icon">📖</div><div class="zine-preview-text"><span class="zine-preview-title">CURACAO 2023</span><span class="zine-preview-sub">Click to read the zine</span></div></div></div>
       </div>
- 
-      <!-- FITNESS -->
-      <div class="beyond-block beyond-block-compact">
-        <h3>Martial Arts & Fitness</h3>
-        <p class="beyond-desc">
-          Black belt in Tae Kwon Do. Also into pilates, kickboxing, and badminton.
-        </p>
-      </div>
- 
+      <div class="beyond-block"><h3>Martial Arts & Fitness</h3><p class="beyond-desc">Black belt in Tae Kwon Do. Also into pilates, kickboxing, and badminton.</p></div>
     </div>
   </div>
 </section>
- 
+
 <!-- ZINE MODAL -->
 <div id="zineModal" class="zine-modal" onclick="if(event.target===this)this.classList.remove('active')">
-  <div class="zine-modal-content">
-    <button class="zine-modal-close" onclick="document.getElementById('zineModal').classList.remove('active')">✕</button>
-    <div class="zine-modal-header">
-      <h3>Curaçao 2023</h3>
-      <p>A 35mm film travel zine — click through the pages below</p>
-    </div>
-    <div class="zine-modal-embed">
-      <iframe 
-        style="border: none; border-radius: 8px;" 
-        width="100%" 
-        height="100%" 
-        src="https://embed.figma.com/proto/9ox00QWTgn9BWQhP5S58MN/CURACAO-2023?node-id=1-81&scaling=scale-down&content-scaling=fixed&embed-host=share" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
+  <div class="zine-modal-content"><button class="zine-modal-close" onclick="document.getElementById('zineModal').classList.remove('active')">✕</button><div class="zine-modal-header"><h3>Curacao 2023</h3><p>A 35mm film travel zine. Click through the pages.</p></div><div class="zine-modal-embed"><iframe style="border:none;" width="100%" height="100%" src="https://embed.figma.com/proto/9ox00QWTgn9BWQhP5S58MN/CURACAO-2023?node-id=1-81&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen></iframe></div></div>
 </div>
- 
-<!-- ── CONTACT ── -->
+
+<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="contact-left reveal">
       <h2>Get in touch</h2>
-      <p>
-        Open to product manager roles across industries. 
-        Interested in AI, consumer, healthcare, and enterprise.
-      </p>
+      <p>Open to product manager roles across industries. Interested in AI, consumer, healthcare, and enterprise.</p>
+      <div class="contact-email"><a href="/cdn-cgi/l/email-protection#c7a4afa6a9a2ababa2b0f687a0aaa6aeabe9a4a8aa"><span class="__cf_email__" data-cfemail="dab9b2bbb4bfb6b6bfadeb9abdb7bbb3b6f4b9b5b7">[email&#160;protected]</span></a></div>
     </div>
     <div class="contact-right reveal">
       <div class="contact-logos">
-        <a href="https://linkedin.com/in/chanellewang" target="_blank" class="contact-logo-link" title="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://github.com/chanellewang" target="_blank" class="contact-logo-link" title="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </a>
+        <a href="https://linkedin.com/in/chanellewang" target="_blank" class="contact-logo-link" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="/cdn-cgi/l/email-protection#c7a4afa6a9a2ababa2b0f687a0aaa6aeabe9a4a8aa" class="contact-logo-link" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        <a href="https://github.com/chanellewang" target="_blank" class="contact-logo-link" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
       </div>
     </div>
   </div>
@@ -704,19 +348,24 @@
     <div class="footer-copy">UCLA Anderson MBA '26</div>
   </div>
 </section>
- 
-<script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav on scroll
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('visible',window.scrollY>400);
   });
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
- 
-</body>
-</html>
+
+  // Reveal on scroll
+  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Parallax on floating images
+  const parallaxImages=document.querySelectorAll('.float-image img');
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){window.requestAnimationFrame(()=>{
+      parallaxImages.forEach(img=>{
+        const rect=img.parentElement.getBoundingClientRect();
+        const vh=window.innerHeight;
+        if(rec
