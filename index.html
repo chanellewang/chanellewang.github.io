@@ -294,6 +294,31 @@
     </div>
   </div>
 
+  <!-- AI GRADING AGENT -->
+  <div class="project-card reveal">
+    <div class="project-top">
+      <div class="project-num">03</div>
+      <div class="project-meta"><div class="project-type">Education · AI · Evals</div><div class="project-title">AI Grading Agent</div></div>
+      <div class="project-tags"><span>Python</span><span>Anthropic API</span><span>LLM-as-Judge</span><span>Few-Shot Calibration</span><span>Eval Framework</span><span>Bias Detection</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-label">The Problem</div>
+      <div class="project-body-content">
+        <p>Grading 42 MBA product critiques across 17 rubric criteria with personalized written feedback takes roughly 10 hours. Naive AI grading — sending submissions to an API and trusting the output — has no calibration to instructor style, no consistency guarantees, and no way to measure whether the grades are any good.</p>
+        <p>Built an AI grading system with human-in-the-loop calibration, dual-pass consistency checking with tiebreaker logic, and a post-grading evaluation suite that measures inter-rater reliability, position bias, and score distribution anomalies. Graded 44 submissions in under 10 minutes with a 2.93-point mean self-agreement distance and zero detected position bias.</p>
+      </div>
+    </div>
+    <div class="project-body" style="margin-top:0.8rem;">
+      <div class="project-body-label">What I Learned</div>
+      <div class="project-body-content">
+        <p>The hard part of AI products is not the API call — it is the evaluation system that tells you whether to trust the output. Few-shot calibration with 3-5 human-graded examples is cheaper and more transparent than fine-tuning. And dual-pass grading with disagreement thresholds gives you a per-submission confidence signal that single-pass systems cannot provide.</p>
+        <div class="project-links">
+          <a href="https://github.com/chanellewang/ai-grading-agent" target="_blank" class="project-link">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </section>
 
 <!-- FLOATING IMAGE 3 - vinyl shop -->
